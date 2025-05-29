@@ -1,4 +1,8 @@
 #!/bin/sh
+set -e
+
+# Set default worker instance if not provided
+export WORKER_INSTANCE=${WORKER_INSTANCE:-"1"}
 
 # Copy mounted script
 if [ -f /mnt/taskprocessing.sh ]; then
@@ -13,7 +17,7 @@ fi
 
 # Verify script exists
 if [ ! -x /opt/nextcloud-ai-worker/taskprocessing.sh ]; then
-    echo "ERROR: Script is not executable"
+    echo "ERROR: AI operatr script is not executable. You can try and mount a script using --volume."
     exit 1
 fi
 
