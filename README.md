@@ -1,5 +1,7 @@
 # Background Jobs Manager for Nextcloud AI
 
+[Docker Hub](https://hub.docker.com/repository/docker/jogojapan/nextcloud-ai-background-jobs/general)
+
 ## Summary
 Use the docker image defined here to speed up the AI assistant you use
 with your self-hosted Nextcloud application. Without this, the AI
