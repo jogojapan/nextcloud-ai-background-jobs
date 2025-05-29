@@ -41,7 +41,7 @@ configuration. It will inherit the volumes and mappings from your
 Nextcloud container and start background AI workers.
 
 ## Configuration
-We will assuming that your docker-compose looks something like this:
+We will assume that your docker-compose looks something like this:
 
 ``` yaml
 services:
