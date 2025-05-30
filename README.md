@@ -95,7 +95,8 @@ immediately be picked up within seconds rather than minutes:
       - shared-backend
 ```
 
-## Configuration
+## Config Parameters
+### Number of Background Workers
 If you'd like more than one background task picker running in parallel, you may configure this through an environment variable. E.g., for 2 parallel task pickers:
 
 ``` yaml
@@ -106,6 +107,21 @@ If you'd like more than one background task picker running in parallel, you may 
       - app
     environment:
       - WORKER_INSTANCE=2
+    networks:
+      - shared-backend
+```
+
+### Restart Period
+By default, the background worker thread will run for 120 seconds and then get retarted. This means if some configuration in the environment (say, the API key, or the system prompt) gets changed, it might take up to 120 seconds until the worker(s) are restarted and have adopted the new settings. If you don't make a lot of changes to the settings, or if you are ok for this to take longer, you may increase the restart period to a higher number using the `RESTART_PERIOD_SEC` environment variable. This will help you reduce CPU load:
+
+``` yaml
+  ai-workers:
+    image: jogojapan/nextcloud-ai-background-jobs:latest
+    restart: always
+    volumes_from:
+      - app
+    environment:
+      - RESTART_PERIOD_SEC=500
     networks:
       - shared-backend
 ```
