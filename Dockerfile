@@ -27,9 +27,10 @@ RUN chmod +x /docker-entrypoint.sh
 
 # Environment variables
 ENV WORKER_INSTANCE=1
+ENV RESTART_PERIOD_SEC=120
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+HEALTHCHECK --interval=300s --timeout=10s --start-period=10s --retries=2 \
     CMD ["/bin/sh", "/opt/nextcloud-ai-worker/healthcheck.sh"]
