@@ -3,6 +3,7 @@ set -e
 
 # Set default worker instance if not provided
 export WORKER_INSTANCE=${WORKER_INSTANCE:-"1"}
+export RESTART_PERIOD_SEC=${RESTART_PERIOD_SEC:-"120"}
 
 # Copy mounted script
 if [ -f /mnt/taskprocessing.sh ]; then
